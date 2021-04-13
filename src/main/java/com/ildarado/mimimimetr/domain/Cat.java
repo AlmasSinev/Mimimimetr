@@ -53,7 +53,7 @@ public class Cat {
         return voicesCount;
     }
 
-    public void setVoicesCount(Integer voicesCount) {
-        this.voicesCount = voicesCount;
+    public void setVoicesCount(Integer voices) {
+        this.voicesCount = voices;
     }
 }
