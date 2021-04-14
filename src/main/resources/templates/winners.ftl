@@ -3,14 +3,14 @@
 <@c.page>
     <div class="card-columns">
         <#list cats as cat>
-            <div class="card my-3" style="max-width: 400px;">
+            <div class="card my-3">
                 <#if cat.filename??>
-                    <img class="card-img-top"  src="/img/${cat.filename}"
+                    <img class="card-img-top" src="/img/${cat.filename}"
                 </#if>
-                <div class="card-body">
-                    <h5 class="card-title">${cat.name}</h5>
-                    <span class="card-text">Место: №</span>
-                    <i style="color: rgba(23,23,23,0.66); text-align: right; margin-left: 5px;">Голосов: ${cat.voicesCount}</i>
+                <span>${cat.name}</span>
+                <i style="color: rgba(23,23,23,0.66); text-align: right; margin-left: 5px;">Место: № ${cat.position}</i>
+                <div class="card-footer text-muted" style="text-align: right; ">
+                    Голосов: ${cat.voicesCount}
                 </div>
             </div>
         <#else>

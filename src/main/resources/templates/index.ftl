@@ -1,9 +1,6 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-    <div>
-        <h1  class="text-center">МИМИМЕТР</h1>
-    </div>
     <form action="test" method="post">
         <div class="form-group">
             <button type="submit" class="btn btn-primary ">Начать тест</button>

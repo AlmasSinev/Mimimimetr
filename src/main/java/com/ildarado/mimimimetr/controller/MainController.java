@@ -5,6 +5,7 @@ import com.ildarado.mimimimetr.repos.CatRepo;
 import com.ildarado.mimimimetr.service.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,14 +24,12 @@ public class MainController {
         return "index";
     }
 
-    @PostMapping("/test")
-    public String startTest() {
-        return "test";
-    }
+
 
     @GetMapping("/winners")
     public String showWinners(Map<String, Object> model){
-        Iterable<Cat> winnersCats = catService.getWinners();
+
+        List<Cat> winnersCats = (List<Cat>) catService.getWinners();
         model.put("cats", winnersCats);
         return "winners";
     }
