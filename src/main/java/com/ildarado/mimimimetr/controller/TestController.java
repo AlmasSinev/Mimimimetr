@@ -5,9 +5,7 @@ import com.ildarado.mimimimetr.service.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TestController {
@@ -16,7 +14,12 @@ public class TestController {
     private CatService catService;
 
     @GetMapping("/test")
-    public String startTest(Cat cat, Model model) {
+    public String startTest(Cat cat) {
+        return "test";
+    }
+
+    @PostMapping("/test")
+    public String testing(@ModelAttribute("cat") Cat cat, Model model) {
         cat = catService.getRandomCat();
         if (!cat.getName().equals("STOP CATS LIST")){
             model.addAttribute("cat", cat);
@@ -29,14 +32,9 @@ public class TestController {
         } else {
             return "redirect:/winners";
         }
-        return "test";
-    }
-
-    @PostMapping("/test/")
-    public String testing(Cat cat) {
 
         cat.setVoicesCount(cat.getVoicesCount() + 1);
         catService.saveCat(cat);
-        return "redirect:/test";
+        return "test";
     }
 }
