@@ -19,8 +19,8 @@ public class TestController {
     }
 
     @PostMapping("/test")
-    public String testing(@ModelAttribute("cat") Cat cat, Model model) {
-        cat = catService.getRandomCat();
+    public String testing( Model model) {
+        Cat cat = catService.getRandomCat();
         if (!cat.getName().equals("STOP CATS LIST")){
             model.addAttribute("cat", cat);
         } else {
@@ -35,6 +35,26 @@ public class TestController {
 
         cat.setVoicesCount(cat.getVoicesCount() + 1);
         catService.saveCat(cat);
+        return "test";
+    }
+
+    @PostMapping("/test2")
+    public String testing2( Model model) {
+        Cat cat = catService.getRandomCat();
+        if (!cat.getName().equals("STOP CATS LIST")){
+            model.addAttribute("cat", cat);
+        } else {
+            return "redirect:/winners";
+        }
+        Cat cat2 = catService.getRandomCat();
+        if (!cat2.getName().equals("STOP CATS LIST")){
+            model.addAttribute("cat2", cat2);
+        } else {
+            return "redirect:/winners";
+        }
+
+        cat2.setVoicesCount(cat2.getVoicesCount() + 1);
+        catService.saveCat(cat2);
         return "test";
     }
 }

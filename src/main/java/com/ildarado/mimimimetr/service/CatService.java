@@ -58,7 +58,7 @@ public class CatService {
         if (allCats.size() != 0) {
             int index = random.nextInt(allCats.size());
             cat = allCats.get(index);
-            cat.setName(cat.getName() + " " + allCats.size());
+            cat.setName(cat.getName());
             allCats.remove(index);
         } else {
             cat = new Cat("STOP CATS LIST");
